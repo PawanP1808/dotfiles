@@ -11,9 +11,13 @@ source $ZSH/oh-my-zsh.sh
 
 alias localBranchDelete='git branch | grep -v "master" | xargs git branch -D '
 
-
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sc='systemctl'
+alias scf='systemctl list-units --failed'
+alias jc='journalctl'
+alias jcu='journalctl -u'
+alias jcuf='journalctl -f -u'
+alias nginxr='sudo /opt/spin/bin/nginx-config'
+alias nginxrs='systemctl restart openresty.service'
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 if [ -e /Users/pawan/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/pawan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
