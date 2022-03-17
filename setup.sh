@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
 if [ -d ~/.oh-my-zsh ]; then
-	echo "oh-my-zsh is installed"
+	echo "OMZ is installed"
  else
- 	sh ./ohmy.sh
+ 	echo "Installing OMZ"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 fi
 
 ln -sf ~/dotfiles/zshrc ~/.zshrc
+
 git config --global alias.l "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-git config --global alias.st status
 
 source ~/.zshrc
 
-# Install minidev from local (if available) or remote
-if [ -f /opt/dev/dev.sh ]; then
-    source /opt/dev/dev.sh
-elif [ -f ~/src/github.com/burke/minidev/dev.sh ]; then
-    source ~/src/github.com/burke/minidev/dev.sh
-fi
